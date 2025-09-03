@@ -1,10 +1,10 @@
-// Get all <p> elements inside the footer
 const footerParagraphs = document.querySelectorAll("footer p");
 
-// Get the current year
 const currentYear = new Date().getFullYear();
+footerParagraphs[0].textContent = `© ${currentYear}|Kasagga Frank.`;
 
-// Set the first paragraph with the copyright info
+const lastModifiedDate = document.lastModified;
+footerParagraphs[1].textContent = `Last Modified: ${lastModifiedDate}`;
 footerParagraphs[0].textContent = `© ${currentYear} Note this CodePen ☼ JavaScript Date Object summary of using the Date object in different ways.`;
 
 // Get the document's last modified date (native format)

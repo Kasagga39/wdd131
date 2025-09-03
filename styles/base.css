@@ -98,11 +98,13 @@ main {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
-img{
+
+img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
 }
+
 footer {
   background-color: var(--primary-color);
   color: white;
