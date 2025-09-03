@@ -12,3 +12,6 @@ const lastModifiedDate = document.lastModified;
 
 // Set the second paragraph with the last modified date
 footerParagraphs[1].textContent = `Last Modified: ${lastModifiedDate}`;
+
+document.getElementById("currentyear").textContent = new Date().getFullYear();
+document.getElementById("lastModified").textContent = `Last Modified: ${document.lastModified}`;
