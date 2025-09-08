@@ -1,0 +1,54 @@
+/* Desktop/tablet styles */
+@media (min-width: 700px) {
+    header {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 1rem 2rem 1rem 2rem;
+    }
+
+    header>nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: auto;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem 1.5rem;
+        align-items: start;
+        justify-items: center;
+        padding: 2rem 1rem;
+    }
+
+    main h1 {
+        grid-column: 1 / -1;
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    figure {
+        margin: 0;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    footer {
+        font-size: 1rem;
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+}
+
+/* Ensure nav is always visible on large screens and hamburger is hidden */
+@media (min-width: 901px) {
+    #menuBtn {
+        display: none !important;
+    }
+
+    header>nav {
+        display: flex !important;
+    }
+}
