@@ -62,7 +62,7 @@ header nav a:focus {
     color: var(--primary);
 }
 
-/* Hamburger styles */
+
 #menuBtn {
     display: none;
     background: none;
@@ -100,7 +100,6 @@ header nav a:focus {
     }
 }
 
-/* Main content */
 main {
     max-width: 900px;
     margin: 2rem auto 0 auto;
@@ -181,7 +180,6 @@ figcaption {
     }
 }
 
-/* Footer */
 footer {
     background: var(--footer-bg);
     color: var(--footer-text);

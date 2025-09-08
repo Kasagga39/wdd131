@@ -42,7 +42,6 @@
     }
 }
 
-/* Ensure nav is always visible on large screens and hamburger is hidden */
 @media (min-width: 901px) {
     #menuBtn {
         display: none !important;
