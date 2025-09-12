@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place</title>
+    <meta name="author" content="Kasagga Frank">
+    <meta name="description" content="A webpage about a place.">
+    <link rel="stylesheet" href="styles/place.css">
+    <script src="scripts/place.js" defer></script>
+</head>
+<body>
+     <div class="container">
+        <header>
+            <h1>Uganda</h1>
+            <p>The pearl of Africa</p>
+        </header>
+        <hero>
+            <img src="images/tour-uganda.jpg" alt="Scenic view of Uganda">
+        </hero>
+
+        <div class="content-wrapper">
+            <div class="card">
+                <h2>Data</h2>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <strong>Area:</strong> 241,038 km²
+                    </div>
+                    <div class="data-item">
+                        <strong>Population:</strong> 50.02 million (2024) 
+                    </div>
+                    <div class="data-item">
+                        <strong>Capital:</strong> Kampala
+                    </div>
+                    <div class="data-item">
+                        <strong>Languages:</strong> English, Swahili, Luganda
+                    </div>
+                    <div class="data-item">
+                        <strong>Currency:</strong> Ugandan Shilling (UGX)
+                    </div>
+                    <div class="data-item">
+                        <strong>Time Zone:</strong> UTC+3
+                    </div>
+                    <div class="data-item">
+                        <strong>Calling Code:</strong> +256
+                    </div>
+                    <div class="data-item">
+                        <strong>Internet TLD:</strong> .ug
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <img src="images/uganda.jpg" alt="Map of Uganda">]
+                    <picture>
+                        <!-- For larger screens -->
+                        <source media="(min-width: 1200px)" srcset="https://images.unsplash.com/photo-1570586437265-ab357bfe4b42?w=1000&h=600&fit=crop">
+                        <!-- For medium screens -->
+                        <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1570586437265-ab357bfe4b42?w=800&h=500&fit=crop">
+                        <!-- For small screens -->
+                        <source media="(max-width: 767px)" srcset="https://images.unsplash.com/photo-1570586437265-ab357bfe4b42?w=600&h=400&fit=crop">
+                        <!-- Fallback image -->
+                        <img src="https://images.unsplash.com/photo-1570586437265-ab357bfe4b42?w=800&h=500&fit=crop" alt="Beautiful landscape of Uganda with green hills and lake">
+                    </picture>
+                </div>
+            </div>
+            
+            <div class="card weather-card">
+                <h2>Weather</h2>
+                <div class="weather-icon">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="temperature">10 °C</div>
+                <div class="conditions">Partly Cloudy</div>
+                
+                <div class="weather-details">
+                    <div class="weather-detail">
+                        <i class="fas fa-wind"></i>
+                        <div>Wind</div>
+                        <div>13 km/h</div>
+                    </div>
+                    <div class="weather-detail">
+                        <i class="fas fa-temperature-low"></i>
+                        <div>Wind Chill</div>
+                        <div>9.8 °C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>©2025 Kasagga Frank © Uganda</p>
+            <div class="last-modified">Last Modification: 02/08/2024 22:47:47</div>
+        </footer>
+    </div>
+    
+</body>
+</html>
