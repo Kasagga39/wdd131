@@ -148,5 +148,18 @@
                 font-size: 1.5rem;
             }
         }
-       
+       /* Hide SVG in larger screens */
+@media (min-width: 768px) {
+  .weather-icon {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .weather-heading::after {
+    content: " ⛅";
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+  }
+}
+
     
