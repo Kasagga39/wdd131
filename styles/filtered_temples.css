@@ -1,0 +1,318 @@
+/*large view*/
+/* Desktop/tablet styles */
+@media (min-width: 700px) {
+    header {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 1rem 2rem 1rem 2rem;
+    }
+
+    header>nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: auto;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem 1.5rem;
+        align-items: start;
+        justify-items: center;
+        padding: 2rem 1rem;
+    }
+
+    main h1 {
+        grid-column: 1 / -1;
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    figure {
+        margin: 0;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    footer {
+        font-size: 1rem;
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+}
+
+@media (min-width: 901px) {
+    #menuBtn {
+        display: none !important;
+    }
+
+    header>nav {
+        display: flex !important;
+    }
+}
+
+
+
+/*Temples small view*/
+/* Root and base styles */
+:root {
+    --primary: #2a1458;
+    --secondary: #f7c873;
+    --accent: #e4572e;
+    --background: #f9f7f6;
+    --text: #22223b;
+    --footer-bg: #2a1458;
+    --footer-text: #fff;
+    --figure-bg: #fff;
+    --caption: #2a1458;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+/* Header */
+header {
+    background: var(--primary);
+    color: var(--footer-text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    position: relative;
+}
+
+.site-title {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+header nav a {
+    color: var(--footer-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+header nav a:hover,
+header nav a:focus {
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+
+#menuBtn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--accent);
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 10;
+}
+
+@media (max-width: 900px) {
+    #menuBtn {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background: var(--primary);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        padding: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        border-bottom-left-radius: 10px;
+    }
+
+    header.open nav {
+        display: flex;
+    }
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem 1.5rem;
+    align-items: start;
+    justify-items: center;
+    background: var(--background);
+}
+
+main h1 {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    color: var(--primary);
+}
+
+figure {
+    margin: 0;
+    width: 100%;
+    max-width: 320px;
+    background: var(--figure-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(42, 20, 88, 0.08);
+    padding: 0.7rem 0.5rem 0.9rem 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+figure img {
+    width: 100%;
+    max-width: 300px;
+    height: 225px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 0.5rem;
+    display: block;
+    border: 2px solid var(--secondary);
+}
+
+figcaption {
+    margin-top: 0.3rem;
+    color: var(--caption);
+    font-size: 1rem;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    figure img {
+        max-width: 100%;
+        height: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    figure img {
+        max-width: 100%;
+        height: 160px;
+    }
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    margin-top: 2rem;
+    font-size: 1rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+footer p {
+    margin: 0.2rem 0;
+    font-size: 1rem;
+}
+.temple-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+
+.temple-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+body {
+  background-color: #fff; /* white background */
+  color: #222; /* dark gray text for good contrast */
+  font-family: 'Lato', sans-serif;
+}
+
+.site-title {
+  color: #111; /* Very dark for header text */
+  font-weight: 700;
+}
+
+nav a {
+  color: #003366; /* Dark blue links */
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #0055aa; /* Brighter blue on hover/focus */
+  outline: 2px solid #0055aa; /* focus outline for accessibility */
+}
+
+button#menuBtn {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+button#menuBtn:hover,
+button#menuBtn:focus {
+  background-color: #0055aa;
+  outline: 2px solid #0055aa;
+}
+
+/* Temple card styles */
+.temple-card {
+  background-color: #7cd858; /* light but distinct from white */
+  color: #222222; /* dark text */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  max-width: 500px;
+}
+
