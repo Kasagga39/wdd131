@@ -104,6 +104,7 @@ header nav {
 }
 
 header nav a {
+    
     color: var(--footer-text);
     text-decoration: none;
     font-size: 1rem;
@@ -275,7 +276,7 @@ body {
 }
 
 .site-title {
-  color: #111; /* Very dark for header text */
+  color: #d67a7a; /* Very dark for header text */
   font-weight: 700;
 }
 
