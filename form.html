@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Kasagga Frank" />
+  <meta name="description" content="Product Review Form" />
+  <title>Product Review Form</title>
+  <link rel="stylesheet" href="styles/form.css" />
+</head>
+<body>
+  <header>
+    <h1>Product Review Form</h1>
+  </header>
+
+  <main>
+    <form action="review.html" method="get">
+      <!-- Product Name -->
+      <label for="product">Product Name:</label>
+      <select id="product" name="product" required>
+        <option value="" disabled selected>Select a Product ...</option>
+        <!-- JS will add more options here -->
+      </select><br><br>
+
+      <!-- Overall Rating -->
+      <fieldset>
+        <legend>Overall Rating:</legend>
+        <label><input type="radio" name="rating" id="star1" value="1" required> 1 ★</label>
+        <label><input type="radio" name="rating" id="star2" value="2"> 2 ★★</label>
+        <label><input type="radio" name="rating" id="star3" value="3"> 3 ★★★</label>
+        <label><input type="radio" name="rating" id="star4" value="4"> 4 ★★★★</label>
+        <label><input type="radio" name="rating" id="star5" value="5"> 5 ★★★★★</label>
+      </fieldset><br>
+
+      <!-- Date of Installation -->
+      <label for="install-date">Date of Installation:</label>
+      <input type="date" id="install-date" name="installDate" required><br><br>
+
+      <!-- Useful Features -->
+      <fieldset>
+        <legend>Useful Features (Check all that apply):</legend>
+        <label><input type="checkbox" id="feature1" name="features" value="Easy Setup"> Easy Setup</label><br>
+        <label><input type="checkbox" id="feature2" name="features" value="User Friendly"> User Friendly</label><br>
+        <label><input type="checkbox" id="feature3" name="features" value="Affordable"> Affordable</label><br>
+        <label><input type="checkbox" id="feature4" name="features" value="Durable"> Durable</label>
+      </fieldset><br>
+
+      <!-- Written Review -->
+      <label for="review">Written Review:</label><br>
+      <textarea id="review" name="review" rows="4" cols="50"></textarea><br><br>
+
+      <!-- User Name -->
+      <label for="username">Your Name (Optional):</label>
+      <input type="text" id="username" name="username"><br><br>
+
+      <!-- Submit -->
+      <input type="submit" value="Submit Review">
+    </form>
+  </main>
+
+  <footer>
+    <p>© <span id="currentyear"></span> 🌸 Kasagga Frank 🌸 Uganda</p>
+    <p id="lastModified">Last Modification: </p>
+  </footer>
+
+  <script src="scripts/form.js" defer></script>
+  <script sscr="script/review.js" defer></script>
+  
+</body>
+</html>

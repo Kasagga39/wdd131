@@ -1,0 +1,118 @@
+/* Base Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body Styles */
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+/* Form Container */
+form {
+  background-color: #ffffff;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #0077cc;
+}
+
+/* Labels and Inputs */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Grouping Fields */
+fieldset {
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+legend {
+  font-weight: 600;
+  color: #0077cc;
+  margin-bottom: 0.5rem;
+}
+
+/* Checkbox & Radio Styling */
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Submit Button */
+input[type="submit"] {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+input[type="submit"]:hover {
+  background-color: #005fa3;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+footer span {
+  color: #0077cc;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+}
