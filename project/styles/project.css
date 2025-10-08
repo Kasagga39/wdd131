@@ -210,3 +210,25 @@ section, nav, .Team {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
+#mainNav {
+  display: flex;
+  /* ...other styles... */
+}
+@media (max-width: 768px) {
+  #mainNav {
+    display: none;
+    flex-direction: column;
+    background: #23235b;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    z-index: 100;
+  }
+  #mainNav.active {
+    display: flex;
+  }
+  #menuBtn {
+    display: block;
+  }
+}
