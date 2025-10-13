@@ -8,9 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Lato:ital,wght@0,100;0,400;1,100;1,400&family=Share+Tech&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Instrument+Serif:ital@0;1&family=Lato:ital,wght@0,100;0,400;1,100;1,400&family=Share+Tech&display=swap" rel="stylesheet">
+<script src="../project/script/gallary.js"></script>
 </head>
 <body>
 
@@ -46,95 +44,18 @@
       <button class="filter-btn" data-filter="energy">Energy Systems</button>
     </div>
     
-    <div class="gallery">
-      <div class="gallery-item" data-category="solar">
-        <div class="image-container">
-          <img src="images/solarcctv-installation.jpg" alt="Solar installation on rooftop">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">Solar installation - Masaka school</div>
-      </div>
-
-      <div class="gallery-item" data-category="security">
-        <div class="image-container">
-          <img src="images/setup.jpg" alt="CCTV security system setup">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">CCTV system at commercial property</div>
-      </div>
-
-      <div class="gallery-item" data-category="energy">
-        <div class="image-container">
-          <img src="images/inverter.jpg" alt="Inverter battery system">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">Battery and inverter setup for home backup</div>
-      </div>
-
-      <div class="gallery-item" data-category="solar">
-        <div class="image-container">
-          <img src="images/team.jpg" alt="MJ team installing panels">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">MJ team installing solar panels</div>
-      </div>
-      
-      <div class="gallery-item" data-category="energy">
-        <div class="image-container">
-          <img src="images/transformer.jpg" alt="MJ transformer installation">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">MJ transformer installation</div>
-      </div>
-      
-      <div class="gallery-item" data-category="solar">
-        <div class="image-container">
-          <img src="images/solar-roof.jpg" alt="Solar panels on rooftop">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">Solar panels on rooftop</div>
-      </div>
-      
-      <div class="gallery-item" data-category="solar">
-        <div class="image-container">
-          <img src="images/solar-streetlights.jpg" alt="Solar-powered street lights">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">Solar-powered street lights</div>
-      </div>
-      
-      <div class="gallery-item" data-category="security">
-        <div class="image-container">
-          <img src="images/monitors.jpg" alt="Security system installation">
-          <div class="overlay">
-            <button class="view-btn">View Details</button>
-          </div>
-        </div>
-        <div class="caption">Advanced security system installation</div>
-      </div>
+    <div class="gallery" id="galleryContainer">
+      <!-- Gallery items will be dynamically generated here -->
     </div>
   </div>
 
-  <!-- Modal for image viewing -->
+  <!-- Enhanced Modal for image viewing -->
   <div id="imageModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <img id="modalImage" src="" alt="">
       <div id="modalCaption"></div>
+      <div id="modalDescription"></div>
     </div>
   </div>
 
@@ -151,6 +72,6 @@
     </div>
   </footer>
 
-  <script src="scripts/gallery.js"></script>
+  
 </body>
 </html>

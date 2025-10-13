@@ -1,141 +1,239 @@
-// Footer functionality
+// Set current year and last modified date in footer
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('lastModified').textContent = 'Last Modified: ' + document.lastModified;
+
+// Mobile menu functionality
+const menuBtn = document.getElementById('menuBtn');
+const mainNav = document.getElementById('mainNav');
+
+if (menuBtn && mainNav) {
+    menuBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        menuBtn.setAttribute('aria-label', 
+            mainNav.classList.contains('active') ? 'Close navigation' : 'Open navigation'
+        );
+    });
+}
+
+// Local Storage functionality for contact form
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current year in footer
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
-    // Set last modified date
-    const lastModified = document.getElementById('lastModified');
-    if (lastModified) {
-        lastModified.textContent = 'Last Modified: ' + document.lastModified;
-    }
-
-    // Mobile menu functionality
-    const menuBtn = document.getElementById('menuBtn');
-    const mainNav = document.getElementById('mainNav');
-
-    if (menuBtn && mainNav) {
-        menuBtn.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-            
-            // Change button text based on menu state
-            if (mainNav.classList.contains('active')) {
-                menuBtn.innerHTML = '&#10005;'; // X symbol
-                menuBtn.setAttribute('aria-label', 'Close navigation');
-            } else {
-                menuBtn.innerHTML = '&#9776;'; // Hamburger icon
-                menuBtn.setAttribute('aria-label', 'Open navigation');
-            }
-        });
-
-        // Close menu when clicking on a link (for mobile)
-        const navLinks = mainNav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    mainNav.classList.remove('active');
-                    menuBtn.innerHTML = '&#9776;';
-                    menuBtn.setAttribute('aria-label', 'Open navigation');
-                }
-            });
-        });
-
-        // Close menu when clicking outside (for mobile)
-        document.addEventListener('click', function(event) {
-            if (window.innerWidth <= 768 && 
-                mainNav.classList.contains('active') &&
-                !menuBtn.contains(event.target) && 
-                !mainNav.contains(event.target)) {
-                mainNav.classList.remove('active');
-                menuBtn.innerHTML = '&#9776;';
-                menuBtn.setAttribute('aria-label', 'Open navigation');
-            }
-        });
-    }
-
-    // Contact form functionality
     const contactForm = document.getElementById('contactForm');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic form validation
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
+    if (!contactForm) return;
+
+    // Form field IDs to save in local storage
+    const formFields = ['name', 'email', 'phone', 'service', 'message'];
+    const storageKey = 'mjElectronicsContactForm';
+
+    // Load saved form data from local storage
+    function loadFormData() {
+        try {
+            const savedData = localStorage.getItem(storageKey);
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                formFields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element && formData[field]) {
+                        element.value = formData[field];
+                    }
+                });
+                console.log('Form data loaded from local storage');
             }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
+        } catch (error) {
+            console.error('Error loading form data from local storage:', error);
+        }
     }
 
-    // Add loading animation
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        
-        // Animate contact cards on load
-        const infoCards = document.querySelectorAll('.info-card');
-        infoCards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 100);
-        });
-        
-        // Animate form on load
-        const formContainer = document.querySelector('.form-container');
-        if (formContainer) {
-            formContainer.style.opacity = '0';
-            formContainer.style.transform = 'translateX(20px)';
-            setTimeout(() => {
-                formContainer.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                formContainer.style.opacity = '1';
-                formContainer.style.transform = 'translateX(0)';
-            }, 300);
+    // Save form data to local storage
+    function saveFormData() {
+        try {
+            const formData = {};
+            formFields.forEach(field => {
+                const element = document.getElementById(field);
+                if (element) {
+                    formData[field] = element.value;
+                }
+            });
+            localStorage.setItem(storageKey, JSON.stringify(formData));
+        } catch (error) {
+            console.error('Error saving form data to local storage:', error);
+        }
+    }
+
+    // Auto-save form data when user types (with debouncing)
+    let saveTimeout;
+    function autoSaveFormData() {
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(saveFormData, 500); // Save after 500ms of inactivity
+    }
+
+    // Clear form data from local storage
+    function clearFormData() {
+        try {
+            localStorage.removeItem(storageKey);
+            console.log('Form data cleared from local storage');
+        } catch (error) {
+            console.error('Error clearing form data from local storage:', error);
+        }
+    }
+
+    // Add event listeners to form fields for auto-save
+    formFields.forEach(field => {
+        const element = document.getElementById(field);
+        if (element) {
+            element.addEventListener('input', autoSaveFormData);
+            element.addEventListener('change', autoSaveFormData);
         }
     });
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    // Load saved data when page loads
+    loadFormData();
+
+    // Form submission handler
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Basic form validation
+        let isValid = true;
+        const requiredFields = ['name', 'email', 'message'];
+        
+        requiredFields.forEach(field => {
+            const element = document.getElementById(field);
+            if (element && !element.value.trim()) {
+                isValid = false;
+                highlightField(element, true);
+            } else {
+                highlightField(element, false);
             }
         });
+
+        if (!isValid) {
+            alert('Please fill in all required fields (Name, Email, and Message).');
+            return;
+        }
+
+        // Here you would typically send the form data to your server
+        // For now, we'll simulate form submission
+        
+        // Show loading state
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        // Simulate API call
+        setTimeout(() => {
+            // Clear form data from local storage after successful submission
+            clearFormData();
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Show success message
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+        }, 1500);
     });
+
+    // Function to highlight fields with errors
+    function highlightField(element, hasError) {
+        if (!element) return;
+        
+        if (hasError) {
+            element.style.borderColor = '#ff4444';
+            element.style.backgroundColor = '#fff8f8';
+        } else {
+            element.style.borderColor = '';
+            element.style.backgroundColor = '';
+        }
+    }
+
+    // Optional: Add a reset button to clear both form and local storage
+    const resetButton = document.createElement('button');
+    resetButton.type = 'button';
+    resetButton.textContent = 'Clear Form';
+    resetButton.className = 'reset-btn';
+    resetButton.style.marginTop = '10px';
+    resetButton.style.marginLeft = '10px';
+    resetButton.style.padding = '10px 15px';
+    resetButton.style.backgroundColor = '#6c757d';
+    resetButton.style.color = 'white';
+    resetButton.style.border = 'none';
+    resetButton.style.borderRadius = '5px';
+    resetButton.style.cursor = 'pointer';
+    
+    resetButton.addEventListener('click', function() {
+        if (confirm('Are you sure you want to clear the form? All entered data will be lost.')) {
+            contactForm.reset();
+            clearFormData();
+            alert('Form cleared successfully.');
+        }
+    });
+
+    // Add reset button after submit button
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    if (submitBtn) {
+        submitBtn.parentNode.appendChild(resetButton);
+    }
+
+    // Optional: Auto-save notification
+    const autoSaveNotice = document.createElement('div');
+    autoSaveNotice.textContent = '✓ Form auto-saved locally';
+    autoSaveNotice.style.fontSize = '12px';
+    autoSaveNotice.style.color = '#28a745';
+    autoSaveNotice.style.marginTop = '5px';
+    autoSaveNotice.style.display = 'none';
+    
+    contactForm.appendChild(autoSaveNotice);
+
+    // Show auto-save notification temporarily
+    let noticeTimeout;
+    function showAutoSaveNotice() {
+        autoSaveNotice.style.display = 'block';
+        clearTimeout(noticeTimeout);
+        noticeTimeout = setTimeout(() => {
+            autoSaveNotice.style.display = 'none';
+        }, 2000);
+    }
+
+    // Update auto-save to show notification
+    const originalAutoSave = autoSaveFormData;
+    autoSaveFormData = function() {
+        originalAutoSave();
+        showAutoSaveNotice();
+    };
+});
+
+// Handle page visibility changes to ensure data is saved
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+        // Save form data when user leaves the page
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            const saveFormData = () => {
+                const formFields = ['name', 'email', 'phone', 'service', 'message'];
+                const storageKey = 'mjElectronicsContactForm';
+                const formData = {};
+                
+                formFields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element) {
+                        formData[field] = element.value;
+                    }
+                });
+                
+                try {
+                    localStorage.setItem(storageKey, JSON.stringify(formData));
+                } catch (error) {
+                    console.error('Error auto-saving form data:', error);
+                }
+            };
+            
+            saveFormData();
+        }
+    }
 });
